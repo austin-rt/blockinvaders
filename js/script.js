@@ -1,9 +1,10 @@
 const board = document.getElementById('board');
+let playerPosition = 389;
 for (let i = 0; i < 400; i++) {
   const cell = document.createElement('div');
   board.appendChild(cell);
   cell.classList.add('cell');
-  // cell.innerText = i;
+  cell.innerText = i;
 }
 
 const cells = Array.from(document.querySelectorAll('.cell'));
@@ -24,5 +25,38 @@ const fillSquares = () => {
 
 fillSquares();
 
-player = cells[389];
-player.classList.add('player');
+const placePlayer = () => {
+  player = cells[playerPosition];
+  player.classList.add('player');
+};
+
+placePlayer();
+
+document.addEventListener('keydown', (e) => {
+  if (e.code === 'ArrowLeft') {
+    moveLeft();
+  } else if (e.code === 'ArrowRight') {
+    moveRight();
+  } else if (e.keycode === 'Space') {
+    shoot();
+  };
+});
+
+const moveLeft = () => {
+  if (playerPosition > 380) {
+    cells[playerPosition].classList.remove('player');
+    playerPosition--;
+    placePlayer();
+  }
+};
+
+const moveRight = () => {
+  if (playerPosition < 399) {
+    cells[playerPosition].classList.remove('player');
+    playerPosition++;
+    placePlayer();
+  }
+};
+const shoot = () => {
+
+};
