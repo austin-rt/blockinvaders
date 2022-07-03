@@ -37,7 +37,7 @@ document.addEventListener('keydown', (e) => {
     moveLeft();
   } else if (e.code === 'ArrowRight') {
     moveRight();
-  } else if (e.keycode === 'Space') {
+  } else if (e.code === 'Space') {
     shoot();
   };
 });
@@ -59,10 +59,19 @@ const moveRight = () => {
 };
 const shoot = () => {
   let bulletPosition = playerPosition;
-  setInterval(() => {
-    bulletPosition -= 20;
-    cells[bulletPosition].classList.add('bullet');
-    console.log(cells[bulletPosition]);
-  }, 100)
-    ;
+  const moveBullet = () => {
+    if (bulletPosition > 19) {
+      cells[bulletPosition].classList.remove('bullet');
+      bulletPosition -= 20;
+      cells[bulletPosition].classList.add('bullet');
+      if (cells[bulletPosition].classList.contains('invader')) {
+        cells[bulletPosition].classList.remove('invader');
+        cells[bulletPosition].classList.remove('bullet');
+        clearInterval(bulletTimer);
+      }
+    } else {
+      cells[bulletPosition].classList.remove('bullet');
+    }
+  };
+  bulletTimer = setInterval(moveBullet, 50);
 };
