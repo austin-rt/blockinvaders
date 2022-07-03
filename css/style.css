@@ -40,3 +40,7 @@ h1 {
 .player {
   background-color: white;
 }
+
+.bullet {
+  background-color: red;
+}

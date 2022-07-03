@@ -58,5 +58,11 @@ const moveRight = () => {
   }
 };
 const shoot = () => {
-
+  let bulletPosition = playerPosition;
+  setInterval(() => {
+    bulletPosition -= 20;
+    cells[bulletPosition].classList.add('bullet');
+    console.log(cells[bulletPosition]);
+  }, 100)
+    ;
 };
