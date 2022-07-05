@@ -1,15 +1,17 @@
 const board = document.getElementById('board');
 let playerPosition = 389;
 let canPlayerShoot = true;
-let shootTimer = 0;
+let shootTimer = 500;
 const numberOfSquares = 400;
+const highestIndexSquare = numberOfSquares - 1;
 const widthOfBoard = Math.sqrt(numberOfSquares);
-const invaderSpeed = 100;
+const invaderSpeed = 500;
 
-for (let i = 0; i < numberOfSquares; i++) {
+for (let i = 0; i <= highestIndexSquare; i++) {
   const cell = document.createElement('div');
   board.appendChild(cell);
   cell.classList.add('cell');
+  cell.id = i;
   cell.innerText = i;
 }
 const cells = [...board.children];
@@ -21,19 +23,34 @@ const invaders = [
   60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79,
 ];
 
-const deadInvaders = [];
+const deadInvaders = []; //use for score
 
 const fillSquares = () => {
   for (let i = 0; i < invaders.length; i++) {
     cells[invaders[i]].classList.add('invader');
   }
-  // const moveInvaders = () => {
-  //   invaders.forEach(invader => {
-  //     invader += widthOfBoard;
-  //     console.log(invader);
-  //   });
-  // };
-  // setInterval(moveInvaders, 1000);
+  const moveInvaders = () => {
+    let lowestIndexInvader = Math.min(...invaders);
+    let highestIndexInvader = Math.max(...invaders);
+    if (highestIndexInvader < highestIndexSquare) {
+      for (let i = 0; i < invaders.length; i++) {
+        invaders[i] += widthOfBoard;
+        for (let j = 0; j < highestIndexSquare; j++) {
+          if (cells[j].id < lowestIndexInvader) {
+            cells[j].classList.remove('invader');
+          }
+        }
+        if (cells[invaders[i]] !== undefined) {
+          cells[invaders[i]].classList.add('invader');
+        }
+      }
+    } else {
+      clearInterval(invadersMoveTimer);
+      console.log('game over');
+    }
+  };
+
+  invadersMoveTimer = setInterval(moveInvaders, invaderSpeed);
 };
 fillSquares();
 
