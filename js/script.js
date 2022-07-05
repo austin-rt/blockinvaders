@@ -18,6 +18,8 @@ const invaders = [
   60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79,
 ];
 
+const deadInvaders = [];
+
 const fillSquares = () => {
   for (let i = 0; i < invaders.length; i++) {
     cells[invaders[i]].classList.add('invader');
@@ -69,8 +71,12 @@ const shoot = () => {
         cells[bulletPosition].classList.add('bullet');
         if (cells[bulletPosition].classList.contains('invader')) {
           cells[bulletPosition].classList.remove('invader');
+          invaders.splice(invaders.indexOf(bulletPosition), 1);
+          deadInvaders.push(bulletPosition);
           cells[bulletPosition].classList.remove('bullet');
           clearInterval(bulletTimer);
+          console.log('invaders', invaders);
+          console.log('deadInvaders', deadInvaders);
         }
       } else {
         cells[bulletPosition].classList.remove('bullet');
