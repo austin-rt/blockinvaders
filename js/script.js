@@ -1,9 +1,12 @@
 const board = document.getElementById('board');
 let playerPosition = 389;
 let canPlayerShoot = true;
-let shootTimer = 1000;
+let shootTimer = 0;
+const numberOfSquares = 400;
+const widthOfBoard = Math.sqrt(numberOfSquares);
+const invaderSpeed = 100;
 
-for (let i = 0; i < 400; i++) {
+for (let i = 0; i < numberOfSquares; i++) {
   const cell = document.createElement('div');
   board.appendChild(cell);
   cell.classList.add('cell');
@@ -24,8 +27,14 @@ const fillSquares = () => {
   for (let i = 0; i < invaders.length; i++) {
     cells[invaders[i]].classList.add('invader');
   }
+  // const moveInvaders = () => {
+  //   invaders.forEach(invader => {
+  //     invader += widthOfBoard;
+  //     console.log(invader);
+  //   });
+  // };
+  // setInterval(moveInvaders, 1000);
 };
-
 fillSquares();
 
 const placePlayer = () => {
@@ -67,7 +76,7 @@ const shoot = () => {
     const moveBullet = () => {
       if (bulletPosition > 19) {
         cells[bulletPosition].classList.remove('bullet');
-        bulletPosition -= 20;
+        bulletPosition -= widthOfBoard;
         cells[bulletPosition].classList.add('bullet');
         if (cells[bulletPosition].classList.contains('invader')) {
           cells[bulletPosition].classList.remove('invader');
@@ -85,11 +94,9 @@ const shoot = () => {
     canPlayerShoot = false;
     bulletTimer = setInterval(moveBullet, 50);
     setTimeout(playerCanShoot, shootTimer);
-    console.log(canPlayerShoot);
   }
 };
 
 const playerCanShoot = () => {
   canPlayerShoot = true;
-  console.log(canPlayerShoot);
 };
