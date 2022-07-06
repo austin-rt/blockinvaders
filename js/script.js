@@ -14,8 +14,7 @@ let playerPosition = highestIndexSquare - (Math.floor(widthOfBoard / 2));
 let canPlayerShoot = true;
 let shootTimer = 500;
 let gameIsOver = false;
-let gameStartTimer = 3;
-
+let gameStartTimer = 1;
 
 for (let i = 0; i <= highestIndexSquare; i++) {
   const cell = document.createElement('div');
@@ -25,42 +24,77 @@ for (let i = 0; i <= highestIndexSquare; i++) {
   cell.innerText = i;
 }
 const cells = [...board.children];
-
-
-
 const fillSquares = () => {
-  for (let i = 0; i < invaders.length; i++) {
-    cells[invaders[i]].classList.add('invader');
-  }
-  const moveInvaders = () => {
-    if (gameIsOver === false) {
-      let lowestIndexInvader = Math.min(...invaders);
-      let highestIndexInvader = Math.max(...invaders);
-      if (highestIndexInvader < highestIndexSquare) {
-        for (let i = 0; i < invaders.length; i++) {
-          invaders[i] += widthOfBoard;
-          for (let j = 0; j < highestIndexSquare; j++) {
-            if (cells[j].classList.contains('player') && cells[j].classList.contains('invader')) {
-              gameIsOver = true;
-              gameOver();
-            }
-            if (cells[j].id < lowestIndexInvader) {
-              cells[j].classList.remove('invader');
-            }
-          }
-          if (cells[invaders[i]] !== undefined) {
-            cells[invaders[i]].classList.add('invader');
-          }
-        }
-      } else {
-        clearInterval(invadersMoveTimer);
-        gameOver();
-      }
-    }
-  };
-
+  invaders.forEach(invader => {
+    cells[invader].classList.add('invader');
+  });
   invadersMoveTimer = setInterval(moveInvaders, invaderSpeed);
 };
+
+const moveInvaders = () => {
+  if (gameIsOver === false) {
+    let lowestIndexInvader = Math.min(...invaders);
+    let highestIndexInvader = Math.max(...invaders);
+    if (highestIndexInvader < (highestIndexSquare - widthOfBoard)) {
+      const redrawInvaders = (arguments) => {
+        cells.filter((cell) => {
+          if (cell.classList.contains('invader')) {
+            if (cell.id < lowestIndexInvader) {
+              cell.classList.remove('invader');
+            }
+          }
+          for (let i = 0; i < arguments.length; i++) {
+            cells[arguments[i]].classList.add('invader');
+          }
+        });
+      };
+      const invaderDestinations = [];
+      invaders.forEach(invader => {
+        invader += widthOfBoard;
+        invaderDestinations.push(invader);
+      });
+      invaders.splice(0, invaders.length, ...invaderDestinations);
+      redrawInvaders(...invaders);
+    } else {
+      gameIsOver = true;
+      gameOver();
+    }
+  }
+};
+
+// const fillSquares = () => {
+//   for (let i = 0; i < invaders.length; i++) {
+//     cells[invaders[i]].classList.add('invader');
+//   }
+//   const moveInvaders = () => {
+//     if (gameIsOver === false) {
+//       let lowestIndexInvader = Math.min(...invaders);
+//       let highestIndexInvader = Math.max(...invaders);
+//       if (highestIndexInvader < highestIndexSquare) {
+//         for (let j = 0; j < invaders.length; j++) {
+//           invaders[j] += widthOfBoard;
+//           for (let k = 0; k < highestIndexSquare; k++) {
+//             if (cells[k].classList.contains('player') && cells[k].classList.contains('invader')) {
+//               gameIsOver = true;
+//               gameOver();
+//             }
+//             if (cells[k].id < lowestIndexInvader) {
+//               cells[k].classList.remove('invader');
+//             }
+//           }
+//           if (cells[invaders[j]] !== undefined) {
+//             cells[invaders[j]].classList.add('invader');
+//           }
+//         }
+//       } else {
+//         clearInterval(invadersMoveTimer);
+//         gameOver();
+//       }
+//     }
+//   };
+
+//   invadersMoveTimer = setInterval(moveInvaders, invaderSpeed);
+// };
 
 const placePlayer = () => {
   player = cells[playerPosition];
