@@ -3,6 +3,10 @@
   margin: 0;
 }
 
+a {
+  text-decoration: none;
+}
+
 body {
   background-color: black;
   color: white;
@@ -62,7 +66,7 @@ h1 {
 }
 
 .invader {
-  background-color: lime
+  background-color: limegreen;
 }
 
 .player {
@@ -85,7 +89,8 @@ h1 {
   top: 125px;
   left: 110px;
   margin: 0 auto;
-  background-color: rgba(0, 0, 0, .5)
+  background-color: rgba(0, 0, 0, .5);
+  border: 2px solid white;
 }
 
 .hidden {

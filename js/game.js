@@ -20,14 +20,14 @@ const shootTimer = bulletSpeed * 20;
 let playerPosition = highestIndexSquare - (Math.floor(widthOfBoard / 2));
 let canPlayerShoot = true;
 let gameIsOver = true;
-let gameStartTimer = 1;
+let gameStartTimer = 3;
 
 for (let i = 0; i <= highestIndexSquare; i++) {
   const cell = document.createElement('div');
   board.appendChild(cell);
   cell.classList.add('cell');
   cell.id = i;
-
+  // cell.innerText = i;
 }
 const cells = [...board.children];
 const fillSquares = () => {
@@ -159,7 +159,7 @@ const gameOver = (highestIndexInvader) => {
     if (invaders.length === 0) {
       overlay.innerText = 'You Won';
       level++;
-
+      // setTimeout(restart, 1000);
     } else if (highestIndexInvader >= (highestIndexSquare - widthOfBoard)) {
       overlay.innerText = 'You Lost';
     }
@@ -167,7 +167,11 @@ const gameOver = (highestIndexInvader) => {
   }
 };
 
-
+// const restart = () => {
+//   startTimerInterval(countdown, 1000);
+//   placePlayer();
+//   startGame();
+// };
 
 placePlayer();
 startGame();
