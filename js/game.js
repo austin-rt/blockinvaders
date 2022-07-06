@@ -27,7 +27,6 @@ for (let i = 0; i <= highestIndexSquare; i++) {
   board.appendChild(cell);
   cell.classList.add('cell');
   cell.id = i;
-  // cell.innerText = i;
 }
 const cells = [...board.children];
 const fillSquares = () => {
@@ -79,6 +78,7 @@ document.addEventListener('keydown', (e) => {
   } else if (e.code === 'ArrowRight') {
     moveRight();
   } else if (e.code === 'Space') {
+    e.preventDefault();
     shoot();
   };
 });
@@ -115,7 +115,6 @@ const shoot = () => {
           if (cells[bulletPosition].classList.contains('invader')) {
             cells[bulletPosition].classList.remove('invader');
             invaders.splice(invaders.indexOf(bulletPosition), 1);
-            // deadInvaders.push(bulletPosition);
             cells[bulletPosition].classList.remove('bullet');
             clearInterval(bulletTimer);
             if (invaders.length === 0) {
@@ -139,7 +138,7 @@ const playerCanShoot = () => {
 };
 
 const startGame = () => {
-  overlay.innerText = `Get ready in ${gameStartTimer}`;
+  overlay.innerText = `Game starting in ${gameStartTimer}`;
   const countdown = () => {
     if (gameStartTimer === 1) {
       overlay.classList.add('hidden');
@@ -148,7 +147,7 @@ const startGame = () => {
       gameIsOver = false;
     } else {
       gameStartTimer--;
-      overlay.innerText = `Get ready in ${gameStartTimer}`;
+      overlay.innerText = `Game starting in ${gameStartTimer}`;
     }
   };
   const startTimerInterval = setInterval(countdown, 1000);
@@ -159,7 +158,6 @@ const gameOver = (highestIndexInvader) => {
     if (invaders.length === 0) {
       overlay.innerText = 'You Won';
       level++;
-      // setTimeout(restart, 1000);
     } else if (highestIndexInvader >= (highestIndexSquare - widthOfBoard)) {
       overlay.innerText = 'You Lost';
     }
@@ -167,11 +165,7 @@ const gameOver = (highestIndexInvader) => {
   }
 };
 
-// const restart = () => {
-//   startTimerInterval(countdown, 1000);
-//   placePlayer();
-//   startGame();
-// };
+
 
 placePlayer();
 startGame();
