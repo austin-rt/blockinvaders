@@ -7,7 +7,7 @@ const invaderSpeed = 1000;
 let playerPosition = 389;
 let canPlayerShoot = true;
 let shootTimer = 500;
-let gameOver = false;
+let gameIsOver = false;
 let gameStartTimer = 3;
 
 
@@ -33,7 +33,7 @@ const fillSquares = () => {
     cells[invaders[i]].classList.add('invader');
   }
   const moveInvaders = () => {
-    if (gameOver === false) {
+    if (gameIsOver === false) {
       let lowestIndexInvader = Math.min(...invaders);
       let highestIndexInvader = Math.max(...invaders);
       if (highestIndexInvader < highestIndexSquare) {
@@ -41,8 +41,8 @@ const fillSquares = () => {
           invaders[i] += widthOfBoard;
           for (let j = 0; j < highestIndexSquare; j++) {
             if (cells[j].classList.contains('player') && cells[j].classList.contains('invader')) {
-              gameOver = true;
-              console.log('game over contains both');
+              gameIsOver = true;
+              gameOver();
             }
             if (cells[j].id < lowestIndexInvader) {
               cells[j].classList.remove('invader');
@@ -54,7 +54,7 @@ const fillSquares = () => {
         }
       } else {
         clearInterval(invadersMoveTimer);
-        console.log('game over out of time');
+        gameOver();
       }
     }
   };
@@ -66,8 +66,6 @@ const placePlayer = () => {
   player = cells[playerPosition];
   player.classList.add('player');
 };
-
-placePlayer();
 
 document.addEventListener('keydown', (e) => {
   if (e.code === 'ArrowLeft') {
@@ -140,5 +138,18 @@ const startGame = () => {
   };
   const startTimerInterval = setInterval(countdown, 1000);
 };
+
+const gameOver = () => {
+  if (gameIsOver === true) {
+    if (invaders.length === 0) {
+      overlay.innerText = 'You Won';
+    } else {
+      overlay.innerText = 'You Lost';
+    }
+    overlay.classList.remove('hidden');
+  }
+};
+
+
+placePlayer();
 startGame();
-// fillSquares();
