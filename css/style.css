@@ -44,3 +44,23 @@ h1 {
 .bullet {
   background-color: red;
 }
+
+.overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 5rem;
+  height: 75vh;
+  width: 75vw;
+  position: fixed;
+  top: 125px;
+  left: 110px;
+  margin: 0 auto;
+  background-color: rgba(0, 0, 0, .5)
+}
+
+.hidden {
+  opacity: 0;
+  z-index: -1;
+}

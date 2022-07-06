@@ -1,12 +1,15 @@
 const board = document.getElementById('board');
+const overlay = document.querySelector('.overlay');
 const numberOfSquares = 400;
 const highestIndexSquare = numberOfSquares - 1;
 const widthOfBoard = Math.sqrt(numberOfSquares);
-const invaderSpeed = 500;
+const invaderSpeed = 1000;
 let playerPosition = 389;
 let canPlayerShoot = true;
 let shootTimer = 500;
 let gameOver = false;
+let gameStartTimer = 3;
+
 
 for (let i = 0; i <= highestIndexSquare; i++) {
   const cell = document.createElement('div');
@@ -58,7 +61,6 @@ const fillSquares = () => {
 
   invadersMoveTimer = setInterval(moveInvaders, invaderSpeed);
 };
-fillSquares();
 
 const placePlayer = () => {
   player = cells[playerPosition];
@@ -123,3 +125,20 @@ const shoot = () => {
 const playerCanShoot = () => {
   canPlayerShoot = true;
 };
+
+const startGame = () => {
+  overlay.innerText = `Get ready in ${gameStartTimer}`;
+  const countdown = () => {
+    if (gameStartTimer === 1) {
+      overlay.classList.add('hidden');
+      clearInterval(startTimerInterval);
+      fillSquares();
+    } else {
+      gameStartTimer--;
+      overlay.innerText = `Get ready in ${gameStartTimer}`;
+    }
+  };
+  const startTimerInterval = setInterval(countdown, 1000);
+};
+startGame();
+// fillSquares();
