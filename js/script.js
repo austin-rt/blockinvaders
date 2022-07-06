@@ -6,8 +6,8 @@ const widthOfBoard = Math.sqrt(numberOfSquares);
 const invaderSpeed = 1000;
 const invaders = [
   5, 6, 7, 8, 9, 10, 11, 12, 13, 14,
-  // 25, 26, 27, 28, 29, 30, 31, 32, 33, 34,
-  // 45, 46, 47, 48, 49, 50, 51, 52, 53, 54,
+  25, 26, 27, 28, 29, 30, 31, 32, 33, 34,
+  45, 46, 47, 48, 49, 50, 51, 52, 53, 54,
 ];
 const deadInvaders = []; //use for score calculation later
 let playerPosition = highestIndexSquare - (Math.floor(widthOfBoard / 2));
@@ -36,16 +36,18 @@ const moveInvaders = () => {
     let lowestIndexInvader = Math.min(...invaders);
     let highestIndexInvader = Math.max(...invaders);
     if (highestIndexInvader < (highestIndexSquare - widthOfBoard)) {
-      const redrawInvaders = (arguments) => {
+      const redrawInvaders = (arr) => {
+        console.log(lowestIndexInvader);
         cells.filter((cell) => {
           if (cell.classList.contains('invader')) {
-            if (cell.id < lowestIndexInvader) {
+            if (cell.id <= highestIndexInvader) {
               cell.classList.remove('invader');
             }
           }
-          for (let i = 0; i < arguments.length; i++) {
-            cells[arguments[i]].classList.add('invader');
-          }
+        });
+
+        arr.forEach(element => {
+          cells[element].classList.add('invader');
         });
       };
       const invaderDestinations = [];
@@ -54,7 +56,8 @@ const moveInvaders = () => {
         invaderDestinations.push(invader);
       });
       invaders.splice(0, invaders.length, ...invaderDestinations);
-      redrawInvaders(...invaders);
+      console.log(invaders);
+      redrawInvaders(invaders);
     } else {
       gameIsOver = true;
       gameOver();
