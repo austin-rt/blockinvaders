@@ -1,6 +1,7 @@
 const levelDisplay = document.getElementById('level');
 let level = 1;
 levelDisplay.innerText = `Level: ${level}`;
+const scoreMultiplier = 1.1;
 const board = document.getElementById('board');
 const overlay = document.querySelector('.overlay');
 const numberOfSquares = 400;
@@ -12,6 +13,7 @@ const invaders = [
   25, 26, 27, 28, 29, 30, 31, 32, 33, 34,
   45, 46, 47, 48, 49, 50, 51, 52, 53, 54,
 ];
+const deadInvaders = []; // used for score calculation
 
 const bulletSpeed = invaderSpeed / 100;
 const shootTimer = bulletSpeed * 20;
@@ -25,6 +27,7 @@ for (let i = 0; i <= highestIndexSquare; i++) {
   board.appendChild(cell);
   cell.classList.add('cell');
   cell.id = i;
+  // cell.innerText = i;
 }
 const cells = [...board.children];
 const fillSquares = () => {
@@ -113,6 +116,7 @@ const shoot = () => {
           if (cells[bulletPosition].classList.contains('invader')) {
             cells[bulletPosition].classList.remove('invader');
             invaders.splice(invaders.indexOf(bulletPosition), 1);
+            deadInvaders.push(bulletPosition);
             cells[bulletPosition].classList.remove('bullet');
             clearInterval(bulletTimer);
             if (invaders.length === 0) {
@@ -151,18 +155,22 @@ const startGame = () => {
   const startTimerInterval = setInterval(countdown, 1000);
 };
 
+const restart = () => {
+
+};
+
 const gameOver = (highestIndexInvader) => {
   if (gameIsOver === true) {
     if (invaders.length === 0) {
       overlay.innerText = 'You Won';
       level++;
+      setTimeout(restart, 1000);
     } else if (highestIndexInvader >= (highestIndexSquare - widthOfBoard)) {
       overlay.innerText = 'You Lost';
     }
     overlay.classList.remove('hidden');
   }
 };
-
 
 
 placePlayer();

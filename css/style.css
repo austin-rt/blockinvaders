@@ -22,7 +22,7 @@ a {
   color: limegreen;
   font-size: 3rem;
   padding: 10px 20px;
-  border: 2px solid white;
+  border: 2px solid limegreen;
   box-shadow: 5px 5px #666;
 }
 
@@ -50,14 +50,18 @@ h1 {
 .board-container {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 #board {
-  border: 4px solid white;
+  text-align: center;
+  border: 1px solid limegreen;
   height: 800px;
   width: 800px;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 .cell {
@@ -70,15 +74,19 @@ h1 {
 .invader {
   background-color: limegreen;
   outline: 1px solid black;
+  justify-content: center;
+  align-items: center;
 }
 
 .player {
-  background-color: white;
-  outline: 1px solid black;
+  background-color: black;
+  outline: 1px solid limegreen;
 }
 
 .bullet {
   background-color: red;
+  outline: 12px solid black;
+  outline-offset: -12px;
 }
 
 .overlay {
@@ -93,7 +101,7 @@ h1 {
   top: -750px;
   margin: 0 auto;
   background-color: rgba(0, 0, 0, .5);
-  border: 2px solid white;
+  border: 1px solid limegreen;
 }
 
 .hidden {
