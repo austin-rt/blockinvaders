@@ -8,9 +8,7 @@ const highestIndexSquare = numberOfSquares - 1;
 const widthOfBoard = Math.sqrt(numberOfSquares);
 const invaderSpeed = 1500 / level;
 const invaders = [
-  5, 6, 7, 8,
-  9,
-  10, 11, 12, 13, 14,
+  5, 6, 7, 8, 9, 10, 11, 12, 13, 14,
   25, 26, 27, 28, 29, 30, 31, 32, 33, 34,
   45, 46, 47, 48, 49, 50, 51, 52, 53, 54,
 ];
@@ -27,7 +25,6 @@ for (let i = 0; i <= highestIndexSquare; i++) {
   board.appendChild(cell);
   cell.classList.add('cell');
   cell.id = i;
-  // cell.innerText = i;
 }
 const cells = [...board.children];
 const fillSquares = () => {
@@ -116,7 +113,6 @@ const shoot = () => {
           if (cells[bulletPosition].classList.contains('invader')) {
             cells[bulletPosition].classList.remove('invader');
             invaders.splice(invaders.indexOf(bulletPosition), 1);
-            // deadInvaders.push(bulletPosition);
             cells[bulletPosition].classList.remove('bullet');
             clearInterval(bulletTimer);
             if (invaders.length === 0) {
@@ -160,7 +156,6 @@ const gameOver = (highestIndexInvader) => {
     if (invaders.length === 0) {
       overlay.innerText = 'You Won';
       level++;
-      // setTimeout(restart, 1000);
     } else if (highestIndexInvader >= (highestIndexSquare - widthOfBoard)) {
       overlay.innerText = 'You Lost';
     }
@@ -168,11 +163,7 @@ const gameOver = (highestIndexInvader) => {
   }
 };
 
-// const restart = () => {
-//   startTimerInterval(countdown, 1000);
-//   placePlayer();
-//   startGame();
-// };
+
 
 placePlayer();
 startGame();
