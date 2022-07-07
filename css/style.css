@@ -41,6 +41,10 @@ a {
   transform: translateY(4px)
 }
 
+.again {
+  margin-top: 50px;
+}
+
 h1 {
   text-align: center;
   font-size: 5rem;

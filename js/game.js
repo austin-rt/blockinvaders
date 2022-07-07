@@ -9,11 +9,11 @@ const widthOfBoard = Math.sqrt(numberOfSquares);
 const invaders = [];
 const deadInvaders = [];
 let level = 1;
-const scoreMultiplier = level * 10;
-let invaderSpeed = Math.ceil(1500 / level);
+let scoreMultiplier;
+let invaderSpeed;
 let score = 0;
-const bulletSpeed = invaderSpeed / 100;
-const shootTimer = bulletSpeed * 20;
+let bulletSpeed;
+let shootTimer;
 let playerPosition = highestIndexSquare - (Math.floor(widthOfBoard / 2));
 let canPlayerShoot = true;
 let gameIsOver = true;
@@ -150,7 +150,20 @@ const playerCanShoot = () => {
   canPlayerShoot = true;
 };
 
+const setStats = () => {
+  gameStartTimer = 3;
+  invaderSpeed = Math.ceil((2000 / (level * 1.3)) + 500);
+  bulletSpeed = (invaderSpeed / 100) + 5;
+  shootTimer = bulletSpeed * 20;
+  scoreMultiplier = level * 2 + 10;
+  console.log(`level: ${level}`);
+  console.log(`invaderSpeed: ${invaderSpeed}`);
+  console.log(`bulletSpeed: ${bulletSpeed}`);
+  console.log(`shootTimer: ${shootTimer}`);
+};
+
 const startGame = () => {
+  setStats();
   levelDisplay.innerText = `${level}`;
   scoreDisplay.innerText = `${score}`;
   overlay.innerText = `Level ${level} starting in... ${gameStartTimer}`;
@@ -169,8 +182,6 @@ const startGame = () => {
 };
 
 const restart = () => {
-  gameStartTimer = 3;
-  gameIsOver = false;
   cells.forEach(cell => {
     cell.classList.remove('invader');
     cell.classList.remove('player');
@@ -187,13 +198,13 @@ const gameOver = () => {
     if (invaders.length === 0) {
       overlay.innerText = `Level ${level} complete!`;
       level++;
-      invaderSpeed = Math.ceil(2000 / (level / 1.9));
       const restartTimer = setTimeout(restart, 1500);
     } else {
       overlay.innerHTML = `<p>Game Over</p><p>Level: ${level}</p><p>Score: ${score}</p>`;
       overlay.appendChild(replayButton);
       replayButton.innerText = 'Play again?';
       replayButton.classList.add('play');
+      replayButton.classList.add('again');
     }
     overlay.classList.remove('hidden');
   }
