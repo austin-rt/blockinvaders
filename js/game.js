@@ -29,7 +29,6 @@ for (let i = 0; i <= highestIndexSquare; i++) {
   board.appendChild(cell);
   cell.classList.add('cell');
   cell.id = i;
-  // cell.innerText = i;
 }
 
 const cells = [...board.children];
@@ -156,10 +155,6 @@ const setStats = () => {
   bulletSpeed = (invaderSpeed / 100) + 2;
   shootTimer = bulletSpeed * 20;
   scoreMultiplier = level * 2 + 10;
-  console.log(`level: ${level}`);
-  console.log(`invaderSpeed: ${invaderSpeed}`);
-  console.log(`bulletSpeed: ${bulletSpeed}`);
-  console.log(`shootTimer: ${shootTimer}`);
 };
 
 const startGame = () => {
