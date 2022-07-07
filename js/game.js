@@ -153,8 +153,8 @@ const playerCanShoot = () => {
 const setStats = () => {
   gameStartTimer = 3;
   invaderSpeed = Math.ceil((2000 / (level * 1.3)) + 500);
-  bulletSpeed = (invaderSpeed / 100) + 5;
-  shootTimer = bulletSpeed * 20;
+  bulletSpeed = (invaderSpeed / 100) + 2;
+  shootTimer = bulletSpeed * 15;
   scoreMultiplier = level * 2 + 10;
   console.log(`level: ${level}`);
   console.log(`invaderSpeed: ${invaderSpeed}`);
