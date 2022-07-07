@@ -69,10 +69,12 @@ h1 {
 
 .invader {
   background-color: limegreen;
+  outline: 1px solid black;
 }
 
 .player {
   background-color: white;
+  outline: 1px solid black;
 }
 
 .bullet {
