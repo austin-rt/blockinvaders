@@ -8,16 +8,21 @@ body {
   color: limegreen;
   font-family: 'VT323', monospace;
   height: 900px;
+  min-width: 804px;
 }
 
 a {
   text-decoration: none;
 }
 
-#play {
+#instructions {
+  margin: 75px auto;
+}
+
+.play {
   font-family: 'VT323', monospace;
   display: flex;
-  margin: 25px auto;
+  margin: 0 auto;
   background-color: black;
   color: limegreen;
   font-size: 3rem;
@@ -26,11 +31,11 @@ a {
   box-shadow: 5px 5px #666;
 }
 
-#play:hover {
+.play:hover {
   background-color: gray;
 }
 
-#play:active {
+.play:active {
   background-color: gray;
   box-shadow: 0px 5px #666;
   transform: translateY(4px)
@@ -41,7 +46,7 @@ h1 {
   font-size: 5rem;
 }
 
-#level {
+h2 {
   text-align: center;
   font-size: 3rem;
   padding-bottom: 10px;
@@ -91,8 +96,8 @@ h1 {
 
 .overlay {
   display: flex;
+  flex-flow: column wrap;
   justify-content: center;
-  align-items: center;
   text-align: center;
   font-size: 5rem;
   height: 75vh;
@@ -102,6 +107,10 @@ h1 {
   margin: 0 auto;
   background-color: rgba(0, 0, 0, .5);
   border: 1px solid limegreen;
+}
+
+.overlay p {
+  margin: 25px;
 }
 
 .hidden {
