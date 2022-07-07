@@ -57,7 +57,3 @@ This is a multi level, in-browser version of the classic arcade game Space Invad
 ### ***Trello Board***
 
 [Block Invaders Trello Board](https://trello.com/b/u5EUgnZs/space-invaders)
-
-Markdown Guide: [ia.net](https://ia.net/writer/support/general/markdown-guide)
-
-Markdown Cheatsheet: [GitHub](https://github.com/austinryantaylor/u1_hw_markdown)
