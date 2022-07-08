@@ -113,7 +113,7 @@ document.addEventListener('keydown', (e) => {
 
 const moveLeft = () => {
   if (gameIsOver === false) {
-    if (playerPosition > 380) {
+    if (playerPosition > numberOfSquares - widthOfBoard) {
       cells[playerPosition].classList.remove('player');
       playerPosition--;
       placePlayer();
@@ -123,7 +123,7 @@ const moveLeft = () => {
 
 const moveRight = () => {
   if (gameIsOver === false) {
-    if (playerPosition < 399) {
+    if (playerPosition < highestIndexSquare) {
       cells[playerPosition].classList.remove('player');
       playerPosition++;
       placePlayer();
