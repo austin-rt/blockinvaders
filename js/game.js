@@ -7,7 +7,6 @@ const numberOfSquares = 400;
 const highestIndexSquare = numberOfSquares - 1;
 const widthOfBoard = Math.sqrt(numberOfSquares);
 const invaders = [];
-const deadInvaders = [];
 let level = 1;
 let scoreMultiplier;
 let invaderSpeed;
@@ -135,10 +134,9 @@ const moveRight = () => {
 // moveBullet uses the same movement logic as moveInvaders. adding the width of the
 // board to the current position, adding and removing the "bullet" class, and repeating with a
 // setInterval based on bulletSpeed. player shoot cooldown needed. if the player shoots too fast,
-// a bullet will get stuck
+// a bullet will get stuck.
 // if bullet class and invader class occupy the same square, both are removed, that position is
-// spliced out of the invader array, then an element is added the deadInvader array
-// score is deadInvader.length * scoreMultiplyer (level * 10)
+// spliced out of the invader array, then score is added to, each hit adds to (level * 10) to the score
 // if bulletPosition < widthOfBoard, bullet class is removed
 
 const shoot = () => {
@@ -153,8 +151,7 @@ const shoot = () => {
           if (cells[bulletPosition].classList.contains('invader')) {
             cells[bulletPosition].classList.remove('invader');
             invaders.splice(invaders.indexOf(bulletPosition), 1);
-            deadInvaders.push('x');
-            score = deadInvaders.length * scoreMultiplier;
+            score = score + scoreMultiplier;
             scoreDisplay.innerText = Math.floor(score);
             cells[bulletPosition].classList.remove('bullet');
             clearInterval(bulletTimer);
