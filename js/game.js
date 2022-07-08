@@ -99,12 +99,14 @@ const placePlayer = () => {
 };
 
 document.addEventListener('keydown', (e) => {
-  e.preventDefault();
   if (e.code === 'ArrowLeft' || e.code === 'KeyA') {
+    e.preventDefault();
     moveLeft();
   } else if (e.code === 'ArrowRight' || e.code === 'KeyD') {
+    e.preventDefault();
     moveRight();
   } else if (e.code === 'KeyW' || e.code === 'ArrowUp' || e.code === 'Space') {
+    e.preventDefault();
     shoot();
   };
 });
