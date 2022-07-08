@@ -76,3 +76,9 @@ This is a multi-level, in-browser version of the classic arcade game Space Invad
 1. add Hall Of Fame leaderboard
 2. make mobile freindly
 3. user choosable color schemes
+
+### ***License***
+
+MIT License
+
+###### Copyright &copy; 2022 Austin Taylor
