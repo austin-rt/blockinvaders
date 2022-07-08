@@ -24,8 +24,8 @@ This is a multi-level, in-browser version of the classic arcade game Space Invad
 
 #### **_Main Javascript Conceptss:_**
     Arrays
-      .filter
-      .forEach
+      .filter();
+      .forEach();
     Loops
       • for
       • while
