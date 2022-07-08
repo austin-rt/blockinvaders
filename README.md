@@ -14,13 +14,26 @@
 
 ### **_Description_**
 
-This is a multi level, in-browser version of the classic arcade game Space Invaders. The user controla a block with the ability to shoot and move left or right. The enemy descends toward the player. If the player defeats all Space Invader blocks, the user automatically moves to the next level. As the level increments both the speed of the invaders descension and the bullet travel speed increase while the shooting cooldown time decreases.
+This is a multi-level, in-browser version of the classic arcade game Space Invaders. The user controls a block that can shoot and move left or right while the enemy descends toward the player. The user automatically moves to the next level if the player defeats all Invader blocks. As the level increments, the speed of the invaders' descension and the bullet travel speed increase while the shooting cooldown time decreases.
 
 ### **_Technologies Used_**
 
 - HTML
 - CSS
 - JavaScript
+
+#### **_Main Javascript Conceptss:_**
+    Arrays
+      .filter
+      .forEach
+    Loops
+      • for
+      • while
+    classlist.remove();
+    classList.add();
+    setInterval();
+    clearInterval();
+    setTimeout();
 
 ### **_Getting Started_**
 
@@ -31,8 +44,8 @@ This is a multi level, in-browser version of the classic arcade game Space Invad
 ### **_Known Bugs_**
 
 - Block Invaders is Currently **desktop only**.
-- Not dynamically sizeable. Currently the minimum width is set to 804px.
-- If player shoots too fast, the "bullet" class gets stuck until the player fires in the same column. implemented a bullet cooldown as a temporary fix
+- The minimum width is set to 804px.
+- If player shoots too fast, the "bullet" class gets stuck until the player fires in the same column. Implemented a bullet cooldown as a temporary fix.
 
 ### **_Screen Shots_**
 ##### Landing Page
@@ -53,8 +66,13 @@ This is a multi level, in-browser version of the classic arcade game Space Invad
 
 ##### **_Sources_**
 
-[Ania Kubow's Space Invaders](https://github.com/kubowania/space-invaders) served as inspiration with using an array to place the invaders and using <code>classList.remove()</code> and <code>classList.add()</code> to move objects
+[Ania Kubow's Space Invaders](https://github.com/kubowania/space-invaders) served as inspiration with using an array to place the invaders and using <code>classList.remove()</code> and <code>classList.add()</code> to move objects.
 
 ### ***Trello Board***
 
 [Block Invaders Trello Board](https://trello.com/b/u5EUgnZs/space-invaders)
+
+### ***Next Features***
+1. add Hall Of Fame leaderboard
+2. make mobile freindly
+3. user choosable color schemes
