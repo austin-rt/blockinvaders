@@ -187,11 +187,7 @@ const setStats = () => {
   invaderSpeed = Math.ceil((2000 / (level * 1.3)) + 500);
   bulletSpeed = (invaderSpeed / 100) + 2;
   shootTimer = bulletSpeed * 20;
-<<<<<<< HEAD
-  scoreMultiplier = level * 2 + 10;
-=======
   scoreMultiplier = level * 10;
->>>>>>> leaderboard
 };
 
 // startGame calls setStats and runs countdown timer using setInterval
