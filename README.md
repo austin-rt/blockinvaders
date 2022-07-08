@@ -72,7 +72,7 @@ This is a multi-level, in-browser version of the classic arcade game Space Invad
 
 [Block Invaders Trello Board](https://trello.com/b/u5EUgnZs/space-invaders)
 
-### ***Next Features***
+### ***Future Features***
 1. add Hall Of Fame leaderboard
 2. make mobile freindly
 3. user choosable color schemes
