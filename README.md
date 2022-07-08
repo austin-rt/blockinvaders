@@ -31,7 +31,8 @@ This is a multi level, in-browser version of the classic arcade game Space Invad
 ### **_Known Bugs_**
 
 - Block Invaders is Currently **desktop only**.
-- Cannot scale below 804px width without breaking.
+- Not dynamically sizeable. Currently the minimum width is set to 804px.
+- If player shoots too fast, the "bullet" class gets stuck until the player fires in the same column. implemented a bullet cooldown as a temporary fix
 
 ### **_Screen Shots_**
 ##### Landing Page

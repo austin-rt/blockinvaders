@@ -20,9 +20,8 @@ let gameIsOver = true;
 let gameStartTimer = 3;
 let invadersMoveTimer;
 
-const generateRandomNumber = () => {
-  return Math.floor(Math.random() * (59));
-};
+
+// creating cell html elements and spreading them into an array
 
 for (let i = 0; i <= highestIndexSquare; i++) {
   const cell = document.createElement('div');
@@ -32,6 +31,15 @@ for (let i = 0; i <= highestIndexSquare; i++) {
 }
 
 const cells = [...board.children];
+
+// while loop places random whole numbers into invaders array until it contains (level * 5) unique numbers
+// forEach loop places "invader" css class onto each invader position
+// setInterval calls moveInvaders at invaderSpeed frequency
+
+const generateRandomNumber = () => {
+  return Math.floor(Math.random() * (59));
+};
+
 const fillSquares = () => {
   clearInterval(invadersMoveTimer);
   while (invaders.length < (level * 5)) {
@@ -45,6 +53,13 @@ const fillSquares = () => {
   });
   invadersMoveTimer = setInterval(moveInvaders, invaderSpeed);
 };
+
+// if highestIndexInvader gets to the last row, call gameOver else, define "redrawInvaders"
+// redrawInvaders filters all cells and if the remove invader class. forEach loop adds "invader" class
+// to cells with the html ID === the invaders array at each position
+// creates new empty array, "invaderDestinations" forEach adds the width of the board to each invader position
+// and pushes that onto the new array. then splice removes all elements from invaders array and spreads the
+// new array into the original array. then calls "redrawInvaders" with the new invaders array
 
 const moveInvaders = () => {
   if (gameIsOver === false) {
@@ -75,6 +90,9 @@ const moveInvaders = () => {
     }
   }
 };
+
+// placing the player add/removes the "player" class from a cell based on
+// keyboard event listeners
 
 const placePlayer = () => {
   player = cells[playerPosition];
@@ -112,12 +130,23 @@ const moveRight = () => {
   }
 };
 
+// shoot truth whether the game is over and if the player is allowed to shoot, starts bulletPosition
+// at playerPosition.
+// moveBullet uses the same movement logic as moveInvaders. adding the width of the
+// board to the current position, adding and removing the "bullet" class, and repeating with a
+// setInterval based on bulletSpeed. player shoot cooldown needed. if the player shoots too fast,
+// a bullet will get stuck
+// if bullet class and invader class occupy the same square, both are removed, that position is
+// spliced out of the invader array, then an element is added the deadInvader array
+// score is deadInvader.length * scoreMultiplyer (level * 10)
+// if bulletPosition < widthOfBoard, bullet class is removed
+
 const shoot = () => {
   if (gameIsOver === false) {
     if (canPlayerShoot === true) {
       let bulletPosition = playerPosition;
       const moveBullet = () => {
-        if (bulletPosition >= 20) {
+        if (bulletPosition >= widthOfBoard) {
           cells[bulletPosition].classList.remove('bullet');
           bulletPosition -= widthOfBoard;
           cells[bulletPosition].classList.add('bullet');
@@ -149,13 +178,24 @@ const playerCanShoot = () => {
   canPlayerShoot = true;
 };
 
+// setStats resets the pregame timer
+// calculates the speed of invader descension, bulletSpeed, shootTimer,
+// and scoreMultiplyer based on either the level or each other
+
 const setStats = () => {
   gameStartTimer = 3;
   invaderSpeed = Math.ceil((2000 / (level * 1.3)) + 500);
   bulletSpeed = (invaderSpeed / 100) + 2;
   shootTimer = bulletSpeed * 20;
+<<<<<<< HEAD
   scoreMultiplier = level * 2 + 10;
+=======
+  scoreMultiplier = level * 10;
+>>>>>>> leaderboard
 };
+
+// startGame calls setStats and runs countdown timer using setInterval
+// after timer === 1, it calls fillSquares
 
 const startGame = () => {
   setStats();
@@ -176,6 +216,8 @@ const startGame = () => {
   const startTimerInterval = setInterval(countdown, 1000);
 };
 
+// restart handles level advancement as well as starting over from level 1
+
 const restart = () => {
   cells.forEach(cell => {
     cell.classList.remove('invader');
@@ -186,6 +228,12 @@ const restart = () => {
   placePlayer();
   startGame();
 };
+
+// gameOver is called when the invaders.length === 0 or highestIndexInvader reaches
+// the bottom of the board. if invaders.length === 0, level increments and player
+// continues else display game over. again add/remove classes to HTML elements
+// based on logic.
+// will add leaderboard once backend is built
 
 const gameOver = () => {
   if (gameIsOver === true) {
@@ -205,9 +253,13 @@ const gameOver = () => {
   }
 };
 
+// initial function calls upon page load
 
 placePlayer();
 startGame();
+
+// resets level and score before starting game over
+// button is only created and appended if palyer loses
 
 replayButton.addEventListener('click', () => {
   level = 1;
