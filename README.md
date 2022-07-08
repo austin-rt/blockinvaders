@@ -64,7 +64,7 @@ This is a multi-level, in-browser version of the classic arcade game Space Invad
 
 ![block-invaders-next-level-screenshot](https://i.imgur.com/VFtAp5q.png "Next Level")
 
-#### **_Sources_**
+### **_Sources_**
 
 [Ania Kubow's Space Invaders](https://github.com/kubowania/space-invaders) served as inspiration with using an array to place the invaders and using <code>classList.remove()</code> and <code>classList.add()</code> to move objects.
 
