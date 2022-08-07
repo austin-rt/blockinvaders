@@ -12,6 +12,8 @@
 
 [Block Invaders](https://block-invaders.surge.sh/)
 
+[Version 1](https://space_invaders.surge.sh/)
+
 ### **_Description_**
 
 This is a multi-level, in-browser version of the classic arcade game Space Invaders. The user controls a block that can shoot and move left or right while the enemy descends toward the player. The user automatically moves to the next level if the player defeats all Invader blocks. As the level increments, the speed of the invaders' descension and the bullet travel speed increase while the shooting cooldown time decreases.
@@ -66,7 +68,7 @@ This is a multi-level, in-browser version of the classic arcade game Space Invad
 
 ### **_Sources_**
 
-[Ania Kubow's Space Invaders](https://github.com/kubowania/space-invaders) served as inspiration with using an array to place the invaders and using <code>classList.remove()</code> and <code>classList.add()</code> to move objects.
+[Ania Kubow's Space Invaders](https://github.com/kubowania/space-invaders) served as inspiration with using an array to place the invaders and using <code>classList.remove()</code> and <code>classList.add()</code> to move elements.
 
 ### ***Trello Board***
 
