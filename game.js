@@ -125,6 +125,9 @@ document.addEventListener('touchend', (e) => {
   } else if (movingX === undefined) {
     shoot();
   }
+  if (startingY + 100 < movingY) {
+    e.preventDefault();
+  }
 
   movingX = undefined;
 });
