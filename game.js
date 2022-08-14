@@ -104,16 +104,19 @@ let startingX,
   movingY;
 
 document.addEventListener('touchstart', (e) => {
+  e.preventDefault;
   startingX = e.touches[0].clientX;
   startingY = e.touches[0].clientY;
 });
 
 document.addEventListener('touchmove', (e) => {
+  e.preventDefault;
   movingX = e.touches[0].clientX;
   movingY = e.touches[0].clientY;
 });
 
 document.addEventListener('touchend', (e) => {
+  e.preventDefault;
   if (startingX + 100 > movingX) {
     moveLeft();
   } else if (movingX === undefined) {
