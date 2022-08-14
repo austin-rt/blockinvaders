@@ -98,6 +98,37 @@ const placePlayer = () => {
   player.classList.add('player');
 };
 
+let startingX,
+  startingY,
+  movingX,
+  movingY;
+
+document.addEventListener('touchstart', (e) => {
+  startingX = e.touches[0].clientX;
+  startingY = e.touches[0].clientY;
+});
+
+document.addEventListener('touchmove', (e) => {
+  movingX = e.touches[0].clientX;
+  movingY = e.touches[0].clientY;
+});
+
+document.addEventListener('touchend', (e) => {
+  if (startingX + 100 > movingX) {
+    moveLeft();
+  } else if (movingX === undefined) {
+    shoot();
+  }
+
+  if (startingX - 100 < movingX) {
+    moveRight();
+  } else if (movingX === undefined) {
+    shoot();
+  }
+
+  movingX = undefined;
+});
+
 document.addEventListener('keydown', (e) => {
   if (e.code === 'ArrowLeft' || e.code === 'KeyA') {
     e.preventDefault();

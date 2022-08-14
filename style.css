@@ -1,3 +1,9 @@
+:root {
+  --l: 560px;
+  --m: 350px;
+  --s: 380px;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -8,8 +14,7 @@ body {
   color: limegreen;
   font-family: 'VT323', monospace;
   text-shadow: 3px 3px #666;
-  height: 900px;
-  min-width: 804px;
+  height: 100vh;
 }
 
 a {
@@ -103,7 +108,7 @@ h2 {
 .bullet {
   background-color: red;
   outline: 12px solid black;
-  outline-offset: -12px;
+  outline-offset: -11px;
 }
 
 .overlay {
@@ -129,4 +134,143 @@ h2 {
 .hidden {
   opacity: 0;
   z-index: -1;
+}
+
+@media screen and (max-width: 805px) {
+
+  /* laptop and ipad */
+  h1 {
+    font-size: 3rem;
+    margin-top: 5px;
+  }
+
+  h2,
+  .play {
+    font-size: 2rem;
+  }
+
+  .again {
+    margin-top: 25px;
+  }
+
+  #board {
+    margin-top: 15px;
+    height: var(--l);
+    width: var(--l);
+  }
+
+  .cell {
+    height: calc(var(--l)/20);
+    width: calc(var(--l)/20);
+  }
+
+  .bullet {
+    outline: 5px solid black;
+    outline-offset: -5px;
+  }
+
+  .overlay {
+    font-size: 3rem;
+    height: 500px;
+    width: 500px;
+    top: -525px;
+  }
+
+  .overlay p {
+    margin: .5rem;
+  }
+
+}
+
+@media screen and (max-width: 570px) {
+
+  /* iphone 13 vertical */
+  h1 {
+    font-size: 2rem;
+    margin-top: 15px;
+  }
+
+  h2,
+  .play {
+    font-size: 2rem;
+  }
+
+  .again {
+    margin-top: 15px;
+  }
+
+  #board {
+    margin-top: 15px;
+    height: 500px;
+    width: var(--m);
+  }
+
+  .cell {
+    height: calc(var(--m)/20);
+    width: calc(var(--m)/20);
+  }
+
+  .bullet {
+    outline: 5px solid black;
+    outline-offset: -5px;
+  }
+
+  .overlay {
+    font-size: 3rem;
+    height: 400px;
+    width: 300px;
+    top: -455px;
+  }
+
+  .overlay p {
+    margin: .5rem;
+  }
+
+}
+
+@media screen and (max-height: 340px) {
+
+  /* iphone 13 horizontal */
+  h1 {
+    font-size: 2rem;
+    margin-top: 5px;
+  }
+
+  h2,
+  .play {
+    font-size: 1.5rem;
+  }
+
+  .again {
+    margin-top: 5px;
+    padding: 5px;
+  }
+
+  #board {
+    margin-top: 15px;
+    height: 240px;
+    width: var(--s);
+  }
+
+  .cell {
+    height: calc(var(--s)/20);
+    width: calc(var(--s)/20);
+  }
+
+  .bullet {
+    outline: 5px solid black;
+    outline-offset: -5px;
+  }
+
+  .overlay {
+    font-size: 1.5rem;
+    height: 200px;
+    width: 300px;
+    top: -220px;
+  }
+
+  .overlay p {
+    margin: .5rem;
+  }
+
 }
