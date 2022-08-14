@@ -107,13 +107,13 @@ document.addEventListener('touchstart', (e) => {
   e.preventDefault;
   startingX = e.touches[0].clientX;
   startingY = e.touches[0].clientY;
-});
+}, { passive: false });
 
 document.addEventListener('touchmove', (e) => {
   e.preventDefault;
   movingX = e.touches[0].clientX;
   movingY = e.touches[0].clientY;
-});
+}, { passive: false });
 
 document.addEventListener('touchend', (e) => {
   e.preventDefault;
@@ -133,7 +133,7 @@ document.addEventListener('touchend', (e) => {
   }
 
   movingX = undefined;
-});
+}, { passive: false });
 
 document.addEventListener('keydown', (e) => {
   if (e.code === 'ArrowLeft' || e.code === 'KeyA') {
