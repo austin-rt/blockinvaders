@@ -33,17 +33,20 @@ shooting cooldown time decreases.
 
 #### **_Basic Javascript Concepts:_**
 
-    Arrays
-      - `.filter()`
-      - `.forEach()`
-    Loops
-      - `for`
-      - `while`
-    - `classList.remove()`
-    - `classList.add()`
-    - `setInterval()`
-    - `clearInterval()`
-    - `setTimeout()`
+Arrays
+
+- `.filter()`
+- `.forEach()`
+
+Loops
+
+- `for`
+- `while`
+- `classList.remove()`
+- `classList.add()`
+- `setInterval()`
+- `clearInterval()`
+- `setTimeout()`
 
 ### **_Getting Started_**
 
