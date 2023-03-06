@@ -9,12 +9,18 @@
   margin: 0;
 }
 
+html,
+body {
+  overscroll-behavior-y: contain;
+}
+
 body {
   background-color: black;
   color: limegreen;
   font-family: 'VT323', monospace;
   text-shadow: 3px 3px #666;
   height: 90vh;
+
 }
 
 a {
@@ -92,23 +98,18 @@ h2 {
 }
 
 .invader {
-  background-color: limegreen;
-  outline: 1px solid black;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 2px 2px #666;
+  background-image: url('assets/invader.svg');
+  background-size: 100%;
 }
 
 .player {
-  background-color: black;
-  outline: 1px solid limegreen;
-  box-shadow: 3px 3px #666;
+  background-image: url('assets/ship.svg');
+  background-size: 100%;
 }
 
-.bullet {
-  background-color: red;
-  outline: 12px solid black;
-  outline-offset: -11px;
+.laser {
+  background-image: url('assets/laser.svg');
+  background-size: 100%;
 }
 
 .overlay {
@@ -164,11 +165,6 @@ h2 {
     width: calc(var(--l)/20);
   }
 
-  .bullet {
-    outline: 5px solid black;
-    outline-offset: -5px;
-  }
-
   .overlay {
     font-size: 3rem;
     height: 500px;
@@ -208,11 +204,6 @@ h2 {
   .cell {
     height: calc(var(--m)/20);
     width: calc(var(--m)/20);
-  }
-
-  .bullet {
-    outline: 5px solid black;
-    outline-offset: -5px;
   }
 
   .overlay {
@@ -255,11 +246,6 @@ h2 {
   .cell {
     height: calc(var(--s)/20);
     width: calc(var(--s)/20);
-  }
-
-  .bullet {
-    outline: 5px solid black;
-    outline-offset: -5px;
   }
 
   .overlay {
