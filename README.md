@@ -29,7 +29,7 @@ shooting cooldown time decreases.
 
 - HTML
 - CSS
-- JavaScript
+- TypeScript
 
 #### **_Basic Javascript Concepts:_**
 
