@@ -4,15 +4,15 @@
 
 ### By: Austin Taylor
 
-[Website](http://wwww.austinryantaylor.com) |
-[GitHub](https://github.com/austinryantaylor) |
-[LinkedIn](https://www.linkedin.com/in/austin-taylor-62594823a/)
+[Website](http://wwww.austinrt.io) |
+[GitHub](https://github.com/austin-rt) |
+[LinkedIn](https://www.linkedin.com/in/austinrt/)
 
 ---
 
 ### **_Hosted Site_**
 
-[Block Invaders](https://austinrt.io/blockinvaders)
+[Block Invaders](https://block-invaders.fly.dev/)
 
 [Version 1](https://space_invaders.surge.sh/)
 
